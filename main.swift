@@ -24,9 +24,26 @@ func sumOfDigits(start: Int, end: Int) -> Int {
     }
     return sum
 }
+func isProperly(sequence: String) -> Bool {
+    var cntr = 0
+    for char in sequence {
+        if char == "(" {
+            cntr += 1
+        } else if char == ")" {
+            cntr -= 1
+            if cntr < 0 {
+                return false
+            }
+        }
+    }
+    return cntr == 0
+}
 print(minSplit(amount:172))
 print(minSplit(amount:172))
 print(minSplit(amount:172))
 print(sumOfDigits(start:7,end:8))
 print(sumOfDigits(start:17,end:20))
 print(sumOfDigits(start:10,end:12))
+print(isProperly(sequence: "(()())"))
+print(isProperly(sequence: ")(()"))
+print(isProperly(sequence: "(()())("))
