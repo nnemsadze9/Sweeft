@@ -38,6 +38,38 @@ func isProperly(sequence: String) -> Bool {
     }
     return cntr == 0
 }
+func countWays(n: Int, steps: [Int]) -> Int {
+var d = Array(repeating: 0, count: n + 1)
+if steps[0] != 0 {
+d[1] = 1
+}
+if steps[1] != 0 {
+d[2] = d[1] + 1
+}
+if steps[0] == 0 && steps[1] == 0 {
+return 0
+}
+for i in 3...n {
+if steps[i - 2] == 0 && steps[i - 1] == 0 {
+return 0
+}
+if steps[i - 1] == 1 {
+d[i] = d[i - 1] + d[i - 2]
+}
+}
+return d[n] + d[n - 1]
+}
+func zeros(N: Int) -> Int {
+    var cntr = 0
+    for i in 1...N {
+        var number = i
+        while number % 5 == 0 {
+            cntr += 1
+            number /= 5
+        }
+    }
+    return cntr
+}
 print(minSplit(amount:172))
 print(minSplit(amount:172))
 print(minSplit(amount:172))
@@ -47,3 +79,9 @@ print(sumOfDigits(start:10,end:12))
 print(isProperly(sequence: "(()())"))
 print(isProperly(sequence: ")(()"))
 print(isProperly(sequence: "(()())("))
+print(countWays(n: 3, steps: [0, 1, 0]))
+print(countWays(n: 4, steps: [0, 1, 1, 0]))
+print(countWays(n: 5, steps: [1, 1, 0, 1, 1]))
+print(zeros(N: 7))
+print(zeros(N: 12))
+print(zeros(N: 490))
