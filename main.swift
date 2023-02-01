@@ -13,6 +13,20 @@ func minSplit(amount: Int) -> Int {
     
     return dp[amount]
 }
+func sumOfDigits(start: Int, end: Int) -> Int {
+    var sum = 0
+    for i in start...end {
+        var number = i
+        while number > 0 {
+            sum += number % 10
+            number /= 10
+        }
+    }
+    return sum
+}
 print(minSplit(amount:172))
 print(minSplit(amount:172))
 print(minSplit(amount:172))
+print(sumOfDigits(start:7,end:8))
+print(sumOfDigits(start:17,end:20))
+print(sumOfDigits(start:10,end:12))
